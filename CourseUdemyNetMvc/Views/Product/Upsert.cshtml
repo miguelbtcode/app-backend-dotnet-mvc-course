@@ -1,0 +1,85 @@
+﻿@model CourseUdemyNetMvc.Models.Product
+
+@{
+    var tittle = "Create new product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post" asp-action="Upsert" enctype="multipart/form-data">
+    
+    @if (Model.ProductId != 0)
+    {
+        tittle = "Edit product";
+        <input asp-for="ProductId" hidden/>
+    }
+
+    <div class="border p-3">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        
+        <div class="row">
+            <div class="col-6">
+                <div class="container">
+                    <h2 class="text-info">@tittle</h2>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-8">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label asp-for="ProductName" class="form-label">Product name</label>
+                            <input asp-for="ProductName" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label asp-for="ShortDescription" class="form-label">Short description</label>
+                            <input asp-for="ShortDescription" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label asp-for="LongDescription" class="form-label">Long description</label>
+                            <input asp-for="LongDescription" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label asp-for="Price" class="form-label">Price</label>
+                            <input asp-for="Price" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label asp-for="ImagenUrl" class="form-label">Imagen Url</label>
+                            <input type="file" name="files" id="ImagenId" class="form-control">
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label asp-for="CategoriaId" class="form-label">Category</label>
+                            <select asp-for="CategoriaId" asp-items="@ViewBag.categoriaDropDown" class="form-select">
+                                <option disabled selected>--Seleccione una categoria--</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="d-grid gap-2 d-md-block">
+                        @if (Model.ProductId != 0)
+                        {
+                            <button type="submit" class="btn btn-primary">Actualizar</button>
+                        }
+                        else
+                        {
+                            <button type="submit" class="btn btn-primary">Crear nuevo</button>
+                        }
+                        <a asp-controller="Product" asp-action="Index" class="btn btn-success">Regresar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,38 @@
+﻿@model CourseUdemyNetMvc.Models.ApplicationType
+
+@{
+    ViewData["Title"] = "Edit/Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post" asp-action="Update">
+    <input asp-for="Id" hidden>
+    <div class="border p-3">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger">
+        </div>
+
+        <div class="form-group row">
+            <h2 class="text-info pl-3">Update applicationType</h2>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <label asp-for="Name" class="form-label">Application Type name</label>
+                    <input asp-for="Name" class="form-control">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+            <br/>
+            <div class="d-grid gap-2 d-md-block">
+                <button type="submit" class="btn btn-warning">Update</button>
+                <a asp-controller="ApplicationType" asp-action="Index" class="btn btn-success">Back</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{ <partial name ="_ValidationScriptsPartial" />}
+}
