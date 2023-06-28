@@ -13,14 +13,14 @@ public class ApplicationTypeController : Controller
         _db = db;
     }
     
-    // GET
+    // GET INDEX
     public IActionResult Index()
     {
         IEnumerable<ApplicationType>? applicationTypeList = _db.ApplicationType;
         return View(applicationTypeList);
     }
     
-    // GET
+    // GET CREATE
     public IActionResult Create()
     {
         return View();
